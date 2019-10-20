@@ -6,17 +6,10 @@ class Sidebar extends React.Component {
         super(props);
         this.state = {
             toggleClass: 'ui left sidebar inverted vertical menu',
-            isClicked: false
         };
     };
 
-    componentDidMount() {
-        this.setState({isClicked: this.props.invisible});
-    };
-
-    toggleSidebar(props) {
-        // eslint-disable-next-line no-debugger
-        debugger;
+    toggleSidebar = (props) => {
         console.log('props --> sidebar: ', this.props);
         if (this.props.isVisible) {
             return this.setState({toggleClass: 'ui left visible sidebar inverted vertical menu'});

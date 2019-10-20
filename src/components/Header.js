@@ -8,8 +8,6 @@ class Header extends React.Component {
     };
 
     hasMenuClicked = () => {
-        // eslint-disable-next-line no-debugger
-        debugger;
         this.setState({isMenuClicked: true});
     };
 
