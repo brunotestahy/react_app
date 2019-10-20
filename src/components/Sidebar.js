@@ -4,29 +4,37 @@ import React from 'react';
 class Sidebar extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { 
-            toggleClass: 'ui left sidebar inverted vertical menu'
+        this.state = {
+            toggleClass: 'ui left sidebar inverted vertical menu',
+            isClicked: false
         };
     };
 
-    toggleSidebar = (prop) => {
-        if(!prop) {
-            this.setState({toggleClass: "ui left visible sidebar inverted vertical menu")};
+    componentDidMount() {
+        this.setState({isClicked: this.props.invisible});
+    };
+
+    toggleSidebar(props) {
+        // eslint-disable-next-line no-debugger
+        debugger;
+        console.log('props --> sidebar: ', this.props);
+        if (this.props.isVisible) {
+            return this.setState({toggleClass: 'ui left visible sidebar inverted vertical menu'});
         } else {
-            this.setState({toggleClass: "ui left sidebar inverted vertical menu")};
+            return this.setState({toggleClass: 'ui left sidebar inverted vertical menu'});
         }
     };
-    
+
     render() {
         return (
             <div>
-                <div className="{this.state.toggleClass}">
-                    <a className="item">
-                        <Link to="/Todo">Show ToDo</Link>
-                    </a>
+                <div className={this.state.toggleClass}>
+                    <Link to='/Todo' className='item'>
+                       Show ToDo
+                    </Link>
                 </div>
-                <div className="pusher">
-                    <div className="ui container">SIDEBAR</div>
+                <div className='pusher'>
+                    <div className='ui container'>SIDEBAR</div>
                 </div>
             </div>
         );
