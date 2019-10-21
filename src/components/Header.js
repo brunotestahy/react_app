@@ -29,6 +29,7 @@ class Header extends React.Component {
                         </h3>
                     </div>
                 </div>
+                <p>--- {this.state.isMenuClicked}</p>
                 <Sidebar isVisible={this.state.isMenuClicked}/>
             </div>
         );
