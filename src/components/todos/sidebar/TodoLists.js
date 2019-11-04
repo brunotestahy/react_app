@@ -9,6 +9,10 @@ const TodoLists = (props) => {
 
     return (
         <div>
+            <div className="ui inverted segment">
+                <i className="pointer circular inverted plus icon"
+                    onClick={() => props.addLists()}></i>
+            </div>
             { props.list.map((todoList) => {
                 return (
                     <Link key={todoList.id}

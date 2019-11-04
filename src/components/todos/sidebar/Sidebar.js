@@ -9,7 +9,7 @@ class Sidebar extends React.Component {
         return (
             <div>
                 <div className={classNames('ui', 'left', { visible: open }, 'sidebar', 'inverted', 'vertical', 'menu')}>
-                    <TodoLists selected={this.props.selected} list={this.props.todoLists} />
+                    <TodoLists selected={this.props.selected} list={this.props.todoLists} addLists={() => this.props.addLists()}/>
                 </div>
                 <div className='pusher'>
                     { this.props.children }

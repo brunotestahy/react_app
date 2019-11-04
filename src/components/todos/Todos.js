@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Sidebar from './sidebar/Sidebar';
 import TodoList from './sidebar/TodoList';
+import InicialPage from './sidebar/InicialPage';
 
 class Todos extends React.Component {
     state = {
@@ -43,8 +44,13 @@ class Todos extends React.Component {
         const selected = this.props.match.params.theSelectedTodoId;
         const list = this.state.todoLists.find(item => selected === item.id);
         return (
-            <Sidebar open={this.state.isSidebarOpen} todoLists={this.state.todoLists} selected={selected}>
+            <Sidebar
+                open={this.state.isSidebarOpen}
+                todoLists={this.state.todoLists}
+                selected={selected}
+                addLists={() => this.addLists()}>
                 <Header onSidebarToggle={() => this.onSidebarToggle()} />
+                {!selected && <InicialPage />}
                 {selected && <TodoList
                     selected={selected}
                     list={list}
@@ -126,6 +132,19 @@ class Todos extends React.Component {
        });
 
        this.setState({ todoLists: newTodoLists })
+   };
+
+   addLists() {
+       const newTodoLists = JSON.parse(JSON.stringify(this.state.todoLists));
+       newTodoLists.unshift({
+           id: 'Type a title',
+           title: 'Type a title',
+           items: [
+               { done: false, description: 'type a task', isTaskEditable: false },
+           ]
+       });
+
+       this.setState({ todoLists: newTodoLists });
    }
 };
 

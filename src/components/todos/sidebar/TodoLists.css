@@ -44,5 +44,13 @@
 }
 
 .todolists-item--addTask {
-    margin-top: 40px !important;
+    margin-top: 30px !important;
+}
+
+.initialPage-container {
+    background-color: #4183c4 !important;
+    color: white;
+    padding: 200px !important;
+    padding-top: 200px !important;
+    padding-bottom: 400px !important;
 }
