@@ -13,30 +13,25 @@ class TodoList extends React.Component {
                     { items.map((item, index) => {
                         return (
                             <div className="field grid-container" key={index}>
-                              <div className="ui checkbox todolists--item-onlyItem grid-item">
+                              <div className={classNames('ui', {'read-only' : this.props.isTaskEditable}, 'checkbox', 'todolists--item-onlyItem', 'grid-item')}>
                                     <input
                                         id={`item_${index}`}
                                         type="checkbox"
                                         onChange={() => this.props.onTaskToggle(index, !item.done)}
                                         checked={item.done}/>
                                     <label
-                                        className={classNames({'pointer' : !this.props.isTextEditable}, {'todolists-item--done' : item.done})}
+                                        className={classNames({'pointer' : !this.props.isTaskEditable}, {'todolists-item--done' : item.done})}
                                         onDoubleClick={() => this.props.hasTaskEditable(index, item.done)}
-                                        contentEditable={item.isTextEditable}
-                                        onBlur={(index, event) => this.props.getTextEdditedValue(index, event)}>
+                                        contentEditable={item.isTaskEditable}
+                                        onMouseLeave={(event) => this.props.getEdditedTask(index, event.currentTarget.innerText)}>
                                         {item.description}
                                     </label> {/*htmlFor={`item_${index}`}*/}
                               </div>
-                              <div className="todolists--item-buttons grid-item">
-                                  <button
-                                    className="mini ui primary button button--save">
-                                    Edit
-                                  </button>
-                                  <button
-                                    className="mini ui button"
-                                    onClick={() => this.props.removeTask(index)}>
-                                    Discard
-                                  </button>
+                              <div className=" todolists--item-buttons grid-item">
+                                  <i className={classNames('mini', {'disabled' : item.done}, {'pointer' : !item.done}, 'edit icon', 'button--save')}
+                                    onClick={() => this.props.hasTaskEditable(index, item.done)}></i>
+                                  <i className="mini pointer trash alternate icon"
+                                    onClick={() => this.props.removeTask(index)}></i>
                               </div>
                             </div>
                         );
