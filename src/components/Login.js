@@ -11,7 +11,7 @@ const Login = () => {
                 </div>
                 <div className='field'>
                     <label>Password</label>
-                    <input name='password' type='password' />
+                    <input placeholder='Password' name='password' type='password' />
                 </div>
                 <div className='inline field'>
                     <div className='ui checkbox'>
@@ -20,7 +20,7 @@ const Login = () => {
                     </div>
                 </div>
                 <div className='ui primary submit button'>
-                    <Link to="/Header">Submit</Link>
+                    <Link to="/Header" style={{ color: 'white' }}>Submit</Link>
                 </div>
                 <div className='ui reset button'>Reset</div>
             </form>

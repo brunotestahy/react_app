@@ -1,16 +1,7 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
-import Sidebar from './Sidebar';
 
 class Header extends React.Component {
-    state = {
-        isMenuClicked: false
-    };
-
-    hasMenuClicked = () => {
-        this.setState({isMenuClicked: true});
-    };
-
     render () {
         return (
             <div>
@@ -21,16 +12,15 @@ class Header extends React.Component {
                                 <Link to='/'>Logout</Link>
                             </button>
                         </h3>
-                        <h3 className='ui left floated header' onClick={this.hasMenuClicked}>
+                        <h3 className='ui left floated header'
+                            onClick={this.props.onSidebarToggle}>
                             <a href='#' id='toggle' className='view-ui item'>
-                                <i className='sidebar icon'></i> 
+                                <i className='sidebar icon'></i>
                                 Menu
                             </a>
                         </h3>
                     </div>
                 </div>
-                <p>--- {this.state.isMenuClicked}</p>
-                <Sidebar isVisible={this.state.isMenuClicked}/>
             </div>
         );
     }

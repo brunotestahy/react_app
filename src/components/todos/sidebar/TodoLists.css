@@ -1,0 +1,44 @@
+.todolists--item-selected {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    color: white;
+}
+
+.todolists--item-title {
+    color: #4183c4;
+}
+
+.todolists--item {
+    margin-top: 50px !important;
+}
+
+.todolists--item-description {
+    margin-top: 30px;
+}
+
+.todolists--item-onlyItem {
+    margin-top: 20px;
+}
+
+.pointer {
+    cursor: pointer !important;
+}
+
+.grid-container {
+  grid-template-columns: auto auto;
+  padding: 10px;
+}
+
+.grid-item {
+  font-size: 30px;
+  text-align: center;
+  display: inline-grid !important;
+}
+
+.todolists--item-buttons {
+    display: inline !important;
+    margin-left: 50px;
+}
+
+.todolists-item--done {
+    text-decoration: line-through;
+}
