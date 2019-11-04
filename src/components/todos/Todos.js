@@ -52,6 +52,7 @@ class Todos extends React.Component {
                     removeTask={(id) => this.removeTask(id)}
                     hasTaskEditable={(id, status) => this.hasTaskEditable(id, status)}
                     getEdditedTask={(index, event) => this.getEdditedTask(index, event)}
+                    addTask={() => this.addTask()}
                 />}
             </Sidebar>
         );
@@ -88,11 +89,15 @@ class Todos extends React.Component {
        const newTodoLists = JSON.parse(JSON.stringify(this.state.todoLists));
 
        newTodoLists[selectedListIndex].items[index].isTaskEditable = false;
+       const taskDescription = this.state.todoLists[selectedListIndex].items[index].description;
+       const currTaskDescription = event.trim();
 
-       if(event && event !== '') {
-           newTodoLists[selectedListIndex].items[index].description = event;
+       if(currTaskDescription && currTaskDescription !== '' && currTaskDescription !== taskDescription) {
+           newTodoLists[selectedListIndex].items[index].description = currTaskDescription;
        }
+
        this.setState({ todoLists: newTodoLists });
+
    };
 
    hasTaskEditable(index, status) {
@@ -106,6 +111,21 @@ class Todos extends React.Component {
 
        newTodoLists[selectedListIndex].items[index].isTaskEditable = true;
        this.setState({todoLists: newTodoLists});
+   };
+
+   addTask() {
+       const selected = this.props.match.params.theSelectedTodoId;
+       const selectedListIndex = this.state.todoLists.findIndex(item => selected === item.id);
+
+       const newTodoLists = JSON.parse(JSON.stringify(this.state.todoLists));
+
+       newTodoLists[selectedListIndex].items.unshift({
+           done: false,
+           description: 'edit me',
+           isTaskEditable: false
+       });
+
+       this.setState({ todoLists: newTodoLists })
    }
 };
 

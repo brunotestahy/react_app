@@ -42,3 +42,7 @@
 .todolists-item--done {
     text-decoration: line-through;
 }
+
+.todolists-item--addTask {
+    margin-top: 40px !important;
+}

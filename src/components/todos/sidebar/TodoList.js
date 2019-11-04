@@ -27,7 +27,7 @@ class TodoList extends React.Component {
                                         {item.description}
                                     </label> {/*htmlFor={`item_${index}`}*/}
                               </div>
-                              <div className=" todolists--item-buttons grid-item">
+                              <div className="todolists--item-buttons grid-item">
                                   <i className={classNames('mini', {'disabled' : item.done}, {'pointer' : !item.done}, 'edit icon', 'button--save')}
                                     onClick={() => this.props.hasTaskEditable(index, item.done)}></i>
                                   <i className="mini pointer trash alternate icon"
@@ -36,6 +36,13 @@ class TodoList extends React.Component {
                             </div>
                         );
                     }) }
+                </div>
+                <div>
+                    <button
+                        class="todolists-item--addTask ui mini primary button"
+                        onClick={() => this.props.addTask()}>
+                      add
+                    </button>
                 </div>
             </div>
         </div>
