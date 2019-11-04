@@ -3,7 +3,7 @@ import React from 'react';
 const InicialPage = () => {
 
     return (
-        <div className="ui center aligned segment initialPage-container">
+        <div className="ui center aligned segment initialPage--container">
             <div className="ui text container">
                 <h1 className="ui container">
                     Make or edit your todo List

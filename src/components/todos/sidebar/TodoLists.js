@@ -10,15 +10,18 @@ const TodoLists = (props) => {
     return (
         <div>
             <div className="ui inverted segment">
-                <i className="pointer circular inverted plus icon"
+                <i className="pointer circular inverted plus icon todolists--add_icon-position" 
                     onClick={() => props.addLists()}></i>
             </div>
-            { props.list.map((todoList) => {
+            { props.list.map((todoList, index) => {
                 return (
-                    <Link key={todoList.id}
-                        className={classNames('item', { 'todolists--item-selected': selected === todoList.id })} to={todoList.id}>
-                        {todoList.title}
-                    </Link>
+                    <div key={todoList.id}>
+                        <Link
+                            className={classNames('item', { 'todolists--item-selected': selected === todoList.id })} to={todoList.id}>
+                            {todoList.title}
+                            <i className="pointer inverted minus icon" onClick={() => props.removeLists(index)}></i>
+                        </Link>
+                    </div>
                 );
             }) }
         </div>);

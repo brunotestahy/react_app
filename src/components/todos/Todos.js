@@ -48,7 +48,8 @@ class Todos extends React.Component {
                 open={this.state.isSidebarOpen}
                 todoLists={this.state.todoLists}
                 selected={selected}
-                addLists={() => this.addLists()}>
+                addLists={() => this.addLists()}
+                removeLists={(index) => this.removeLists(index)}>
                 <Header onSidebarToggle={() => this.onSidebarToggle()} />
                 {!selected && <InicialPage />}
                 {selected && <TodoList
@@ -56,7 +57,7 @@ class Todos extends React.Component {
                     list={list}
                     onTaskToggle={(id, status) => this.onTaskToggle(id, status)}
                     removeTask={(id) => this.removeTask(id)}
-                    hasTaskEditable={(id, status) => this.hasTaskEditable(id, status)}
+                    setTaskEditableStatus={(id) => this.setTaskEditableStatus(id)}
                     getEdditedTask={(index, event) => this.getEdditedTask(index, event)}
                     addTask={() => this.addTask()}
                 />}
@@ -106,11 +107,7 @@ class Todos extends React.Component {
 
    };
 
-   hasTaskEditable(index, status) {
-       if(status) {
-           return;
-       };
-
+   setTaskEditableStatus(index) {
        const selected = this.props.match.params.theSelectedTodoId;
        const selectedListIndex = this.state.todoLists.findIndex(item => selected === item.id);
        const newTodoLists = JSON.parse(JSON.stringify(this.state.todoLists));
@@ -137,15 +134,22 @@ class Todos extends React.Component {
    addLists() {
        const newTodoLists = JSON.parse(JSON.stringify(this.state.todoLists));
        newTodoLists.unshift({
-           id: 'Type a title',
-           title: 'Type a title',
+           id: 'Type something',
+           title: 'Type something',
            items: [
-               { done: false, description: 'type a task', isTaskEditable: false },
+               { done: false, description: 'type something...', isTaskEditable: false },
            ]
        });
 
        this.setState({ todoLists: newTodoLists });
-   }
+   };
+
+   removeLists(index) {
+       debugger;
+       const newTodoLists = JSON.parse(JSON.stringify(this.state.todoLists));
+       newTodoLists.splice(index, 1);
+       this.setState({ todoLists: newTodoLists });
+   };
 };
 
 export default Todos;
