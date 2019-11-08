@@ -68,3 +68,11 @@
 .todolists--minus-icon-position {
     padding-right: 300px;
 }
+
+.todolists--content:hover .todolists--item_icons-position {
+    opacity: 1
+}
+
+.todolists--item_icons-position {
+    opacity: 0
+}

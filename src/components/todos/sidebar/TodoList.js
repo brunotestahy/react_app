@@ -12,27 +12,27 @@ class TodoList extends React.Component {
                 <div className="todolists--item-margin_top">
                     { items.map((item, index) => {
                         return (
-                            <div className="field grid-container" key={index}>
-                              <div className={classNames('ui', {'read-only' : this.props.isTaskEditable}, 'checkbox', 'todolists--checkbox_item-margin_top', 'grid-item')}>
-                                    <input
-                                        id={`item_${index}`}
-                                        type="checkbox"
-                                        onChange={() => this.props.onTaskToggle(index, !item.done)}
-                                        checked={item.done}/>
-                                    <label
-                                        className={classNames({'pointer' : !this.props.isTaskEditable}, {'todolists--item-done' : item.done})}
-                                        onDoubleClick={() => this.props.setTaskEditableStatus(index)}
-                                        contentEditable={item.isTaskEditable}
-                                        onMouseLeave={(event) => this.props.getEdditedTask(index, event.currentTarget.innerText)}>
-                                        {item.description}
-                                    </label> {/*htmlFor={`item_${index}`}*/}
-                              </div>
-                              <div className="todolists--item_icons-position grid-item">
-                                  <i className={classNames('mini', {'pointer' : !item.done}, 'edit icon', 'button--save')}
-                                    onClick={() => this.props.setTaskEditableStatus(index)}></i>
-                                  <i className="mini pointer trash alternate icon"
-                                    onClick={() => this.props.removeTask(index)}></i>
-                              </div>
+                            <div className="todolists--content field grid-container" key={index}>
+                                  <div className={classNames('ui', {'read-only' : this.props.isTaskEditable}, 'checkbox', 'todolists--checkbox_item-margin_top', 'grid-item')}>
+                                        <input
+                                            id={`item_${index}`}
+                                            type="checkbox"
+                                            onChange={() => this.props.onTaskToggle(index, !item.done)}
+                                            checked={item.done}/>
+                                        <label
+                                            className={classNames({'pointer' : !this.props.isTaskEditable}, {'todolists--item-done' : item.done})}
+                                            onDoubleClick={() => this.props.setTaskEditableStatus(index)}
+                                            contentEditable={item.isTaskEditable}
+                                            onBlur={(event) => this.props.getEdditedTask(index, event.currentTarget.innerText)}>
+                                            {item.description}
+                                        </label> {/*htmlFor={`item_${index}`}*/}
+                                  </div>
+                                  <div className="todolists--item_icons-position grid-item">
+                                      <i className={classNames('mini', {'pointer' : !item.done}, 'edit icon', 'button--save')}
+                                        onClick={() => this.props.setTaskEditableStatus(index)}></i>
+                                      <i className="mini pointer trash alternate icon"
+                                        onClick={() => this.props.removeTask(index)}></i>
+                                  </div>
                             </div>
                         );
                     }) }
