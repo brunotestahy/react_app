@@ -104,7 +104,6 @@ class Todos extends React.Component {
        }
 
        this.setState({ todoLists: newTodoLists });
-
    };
 
    setTaskEditableStatus(index) {
@@ -150,6 +149,6 @@ class Todos extends React.Component {
        newTodoLists.splice(index, 1);
        this.setState({ todoLists: newTodoLists });
    };
-};
+}
 
 export default Todos;

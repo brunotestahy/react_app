@@ -1,6 +1,5 @@
-import { BrowserRouter, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
 import React from 'react';
-import Login from './Login';
 import Todos from './todos/Todos';
 
 class App extends React.Component {

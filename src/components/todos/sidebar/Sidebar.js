@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import React from 'react';
 import TodoLists from './TodoLists';
 import classNames from 'classnames';
@@ -21,6 +20,6 @@ class Sidebar extends React.Component {
             </div>
         );
     }
-};
+}
 
 export default Sidebar;

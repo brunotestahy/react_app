@@ -7,7 +7,7 @@ class TodoList extends React.Component {
         const { title, id, items } = this.props.list;
         return (
             <div className="ui form ui segment">
-              <div className="todolists--items grouped fields">
+              <div className="todolists--items grouped fields" key={id}>
                 <h2 className="todolists--item_header-color_blue">Edit your <strong>{title}</strong> list! </h2>
                 <div className="todolists--item-margin_top">
                     { items.map((item, index) => {
@@ -28,10 +28,8 @@ class TodoList extends React.Component {
                                         </label> {/*htmlFor={`item_${index}`}*/}
                                   </div>
                                   <div className="todolists--item_icons-position grid-item">
-                                      <i className={classNames('mini', {'pointer' : !item.done}, 'edit icon', 'button--save')}
-                                        onClick={() => this.props.setTaskEditableStatus(index)}></i>
-                                      <i className="mini pointer trash alternate icon"
-                                        onClick={() => this.props.removeTask(index)}></i>
+                                      <i className={classNames('mini', {'pointer': !item.done}, 'edit icon', 'button--save')} onClick={() => this.props.setTaskEditableStatus(index)}/>
+                                      <i className="mini pointer trash alternate icon" onClick={() => this.props.removeTask(index)}/>
                                   </div>
                             </div>
                         );

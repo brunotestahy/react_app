@@ -13,7 +13,7 @@ class Header extends React.Component {
                     </h3>
                     <h3 className='ui left floated header'
                         onClick={this.props.onSidebarToggle}>
-                        <a href='#' id='toggle' className='view-ui item'>
+                        <a href='#/' id='toggle' className='view-ui item'>
                             <i className='sidebar icon'></i>
                             Menu
                         </a>
